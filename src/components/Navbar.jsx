@@ -62,7 +62,7 @@ const Navbar = () => {
             <ListItem disablePadding>
                 <ListItemButton
                     component="a"
-                    href="/cv.pdf"
+                    href="/Mohammad-Shaikh-Ibrahim-CV.pdf"
                     download
                     onClick={handleDrawerToggle}
                     sx={{
@@ -136,7 +136,7 @@ const Navbar = () => {
                                 {/* Download CV Button for Desktop */}
                                 <Button
                                     color="primary"
-                                    href="/cv.pdf"
+                                    href="/Mohammad-Shaikh-Ibrahim-CV.pdf"
                                     download
                                     sx={{
                                         fontWeight: 600,
