@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Typography, Button, Snackbar, Alert, Box } from '@mui/material';
 import { GradientButton } from '../styles/common';
+import SEO from '../components/SEO';
 import {
     ContactContainer,
     ContactForm,
@@ -14,7 +15,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import { PhoneAndroid, PhoneBluetoothSpeaker, PhoneCallback, PhoneEnabled, PhoneForwarded } from "@mui/icons-material";
+import { PhoneAndroid } from "@mui/icons-material";
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -52,6 +53,11 @@ const Contact = () => {
 
     return (
         <Box sx={{ width: '100%', maxWidth: '1400px', mx: 'auto', px: { xs: 2, sm: 4, md: 6 } }}>
+            <SEO
+                title="Contact"
+                description="Get in touch with Mohammad Shaikh Ibrahim for front-end development opportunities, collaborations, or inquiries."
+                path="/contact"
+            />
             <Typography
                 variant="h3"
                 component="h1"

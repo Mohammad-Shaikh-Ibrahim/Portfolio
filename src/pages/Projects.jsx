@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Box, Container, Chip, Typography } from "@mui/material";
 import { ProjectGrid, ProjectCard, ProjectMedia, ProjectContent, ProjectTitle, ProjectDescription, ProjectTechStack, TechChip, ProjectActions } from "../styles/projects";
 import { projects } from "../data/projects";
 import { GradientButton, OutlinedButton } from "../styles/common";
+import SEO from "../components/SEO";
 
 const getAllTechnologies = (projects) => {
     const techSet = new Set();
@@ -23,6 +24,11 @@ const Projects = () => {
 
     return (
         <Box sx={{ py: 8 }}>
+            <SEO
+                title="Projects"
+                description="Explore a collection of web development projects built by Mohammad Shaikh Ibrahim using React, Material-UI, and modern front-end tools."
+                path="/projects"
+            />
             <Container maxWidth="lg">
                 <Typography variant="h3" fontWeight={700} mb={4} align="center">
                     Projects
@@ -48,7 +54,13 @@ const Projects = () => {
                     {filteredProjects.map((project) => (
                         <ProjectCard key={project.id} >
                             <ProjectMedia>
-                                <img src={project.image} alt={project.title} />
+                                <img
+                                    src={project.image}
+                                    alt={project.title}
+                                    loading="lazy"
+                                    width="400"
+                                    height="300"
+                                />
                             </ProjectMedia>
                             <ProjectContent>
                                 <ProjectTitle variant="h5">{project.title}</ProjectTitle>

@@ -17,13 +17,8 @@ import {
     Container,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-
-const navItems = [
-    { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
-    { name: 'Projects', path: '/projects' },
-    { name: 'Contact', path: '/contact' },
-];
+import CloseIcon from '@mui/icons-material/Close';
+import { NAV_ITEMS, CV_PATH } from '../constants';
 
 const Navbar = () => {
     const [mobileOpen, setMobileOpen] = useState(false);
@@ -35,21 +30,56 @@ const Navbar = () => {
     };
 
     const drawer = (
-        <List>
-            {navItems.map((item) => (
-                <ListItem key={item.name} disablePadding>
+        <Box sx={{ p: 2 }}>
+            <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2 }}>
+                <IconButton
+                    onClick={handleDrawerToggle}
+                    aria-label="Close navigation menu"
+                >
+                    <CloseIcon />
+                </IconButton>
+            </Box>
+            <List>
+                {NAV_ITEMS.map((item) => (
+                    <ListItem key={item.name} disablePadding>
+                        <ListItemButton
+                            component={RouterLink}
+                            to={item.path}
+                            onClick={handleDrawerToggle}
+                            sx={{
+                                borderRadius: 2,
+                                mb: 1,
+                                '&:hover': {
+                                    backgroundColor: theme.palette.primary.light + '10',
+                                },
+                            }}
+                        >
+                            <ListItemText
+                                primary={item.name}
+                                primaryTypographyProps={{
+                                    fontWeight: 600,
+                                    color: theme.palette.primary.main,
+                                }}
+                            />
+                        </ListItemButton>
+                    </ListItem>
+                ))}
+                {/* Download CV Button for Drawer */}
+                <ListItem disablePadding>
                     <ListItemButton
-                        component={RouterLink}
-                        to={item.path}
+                        component="a"
+                        href={CV_PATH}
+                        download
                         onClick={handleDrawerToggle}
                         sx={{
+                            borderRadius: 2,
                             '&:hover': {
                                 backgroundColor: theme.palette.primary.light + '10',
                             },
                         }}
                     >
                         <ListItemText
-                            primary={item.name}
+                            primary="Download CV"
                             primaryTypographyProps={{
                                 fontWeight: 600,
                                 color: theme.palette.primary.main,
@@ -57,30 +87,8 @@ const Navbar = () => {
                         />
                     </ListItemButton>
                 </ListItem>
-            ))}
-            {/* Download CV Button for Drawer */}
-            <ListItem disablePadding>
-                <ListItemButton
-                    component="a"
-                    href="/Mohammad-Shaikh-Ibrahim-CV.pdf"
-                    download
-                    onClick={handleDrawerToggle}
-                    sx={{
-                        '&:hover': {
-                            backgroundColor: theme.palette.primary.light + '10',
-                        },
-                    }}
-                >
-                    <ListItemText
-                        primary="Download CV"
-                        primaryTypographyProps={{
-                            fontWeight: 600,
-                            color: theme.palette.primary.main,
-                        }}
-                    />
-                </ListItemButton>
-            </ListItem>
-        </List>
+            </List>
+        </Box>
     );
 
     return (
@@ -108,7 +116,9 @@ const Navbar = () => {
                         {isMobile ? (
                             <IconButton
                                 color="primary"
-                                aria-label="open drawer"
+                                aria-label="Open navigation menu"
+                                aria-expanded={mobileOpen}
+                                aria-controls="mobile-navigation"
                                 edge="start"
                                 onClick={handleDrawerToggle}
                                 sx={{ ml: 2 }}
@@ -116,8 +126,8 @@ const Navbar = () => {
                                 <MenuIcon />
                             </IconButton>
                         ) : (
-                            <Box sx={{ display: 'flex', gap: 3 }}>
-                                {navItems.map((item) => (
+                            <Box component="nav" sx={{ display: 'flex', gap: 3 }} aria-label="Main navigation">
+                                {NAV_ITEMS.map((item) => (
                                     <Button
                                         key={item.name}
                                         component={RouterLink}
@@ -136,7 +146,7 @@ const Navbar = () => {
                                 {/* Download CV Button for Desktop */}
                                 <Button
                                     color="primary"
-                                    href="/Mohammad-Shaikh-Ibrahim-CV.pdf"
+                                    href={CV_PATH}
                                     download
                                     sx={{
                                         fontWeight: 600,
@@ -161,6 +171,7 @@ const Navbar = () => {
             </AppBar>
 
             <Drawer
+                id="mobile-navigation"
                 variant="temporary"
                 anchor="right"
                 open={mobileOpen}
@@ -183,4 +194,4 @@ const Navbar = () => {
     );
 };
 
-export default Navbar; 
+export default Navbar;

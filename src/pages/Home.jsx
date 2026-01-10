@@ -1,5 +1,4 @@
-import React from "react";
-import { Box, Container, Button } from "@mui/material";
+import { Box, Container, Button, useTheme } from "@mui/material";
 import { GradientButton, OutlinedButton } from "../styles/common";
 import {
     HeroContainer,
@@ -14,18 +13,25 @@ import {
 import { ProjectGrid, ProjectCard, ProjectMedia, ProjectContent, ProjectTitle, ProjectDescription, ProjectTechStack, TechChip, ProjectActions } from "../styles/projects";
 import { projects } from "../data/projects";
 import { useNavigate } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 const Home = () => {
     const navigate = useNavigate();
+    const theme = useTheme();
 
     return (
         <Box>
+            <SEO
+                title="Home"
+                description="Welcome to the portfolio of Mohammad Shaikh Ibrahim, a passionate Front-End Engineer specializing in React.js and modern web UI."
+                path="/"
+            />
             {/* Hero Section */}
             <HeroContainer>
                 <Container maxWidth="lg">
                     <HeroContent>
                         <HeroTitle>
-                            Hi, I'm <span style={{ color: "#4F46E5" }}>Mohammad Shaikh Ibrahim</span> 👋
+                            Hi, I'm <Box component="span" sx={{ color: theme.palette.primary.main }}>Mohammad Shaikh Ibrahim</Box> 👋
                         </HeroTitle>
                         <HeroSubtitle>
                             I'm a passionate Front-End Engineer from Jenin, Palestine. I specialize in creating clean, responsive, and user-friendly web interfaces using modern technologies like React.js, JavaScript, and Material UI. With hands-on experience in API integration and UI development, I focus on building seamless digital experiences.
@@ -58,7 +64,13 @@ const Home = () => {
                         {projects.slice(0, 4).map((project) => (
                             <ProjectCard key={project.id}>
                                 <ProjectMedia>
-                                    <img src={project.image} alt={project.title} />
+                                    <img
+                                        src={project.image}
+                                        alt={project.title}
+                                        loading="lazy"
+                                        width="400"
+                                        height="300"
+                                    />
                                 </ProjectMedia>
                                 <ProjectContent>
                                     <ProjectTitle variant="h5">{project.title}</ProjectTitle>

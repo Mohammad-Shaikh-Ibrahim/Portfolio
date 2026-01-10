@@ -1,5 +1,5 @@
-import React from 'react';
 import { Typography, Box } from '@mui/material';
+import SEO from '../components/SEO';
 import { profileData } from '../data/profile';
 import {
     AboutContainer,
@@ -16,6 +16,11 @@ import {
 const About = () => {
     return (
         <AboutContainer>
+            <SEO
+                title="About"
+                description="Learn more about Mohammad Shaikh Ibrahim, his skills in React, JavaScript, and his professional experience as a Front-End Engineer."
+                path="/about"
+            />
             <AboutContent>
                 <Typography variant="h4" gutterBottom>
                     About Me
