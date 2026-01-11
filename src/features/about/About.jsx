@@ -1,6 +1,6 @@
 import { Typography, Box } from '@mui/material';
-import SEO from '../components/SEO';
-import { profileData } from '../data/profile';
+import SEO from '../../components/common/SEO';
+import { profileData } from '../../data/profile';
 import {
     AboutContainer,
     AboutContent,
@@ -11,7 +11,7 @@ import {
     SkillItem,
     LanguagesContainer,
     LanguageItem,
-} from '../styles/about';
+} from '../../styles/about';
 
 const About = () => {
     return (

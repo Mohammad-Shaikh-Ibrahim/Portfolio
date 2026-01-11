@@ -86,8 +86,6 @@ export const OutlinedButton = styled(Button)(({ theme }) => ({
   transition: "all 0.3s ease-in-out",
   "&:hover": {
     transform: "translateY(-2px)",
-    background: theme.palette.primary.main,
-    color: theme.palette.common.white,
     boxShadow: `0 10px 15px -3px ${theme.palette.primary.main}20, 0 4px 6px -2px ${theme.palette.primary.main}10`,
   },
 }));

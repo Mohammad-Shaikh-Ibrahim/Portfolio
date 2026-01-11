@@ -1,17 +1,18 @@
 import { Box, Container, Typography, IconButton, Link } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import EmailIcon from '@mui/icons-material/Email';
-import { SOCIAL_LINKS, SITE_CONFIG } from '../constants';
+import { SOCIAL_LINKS, SITE_CONFIG } from '../../constants';
 
 const Footer = () => {
     return (
         <Box
             component="footer"
             sx={{
-                py: 3,
+                py: 4,
                 px: 2,
                 mt: 'auto',
-                backgroundColor: (theme) => theme.palette.grey[100],
+                backgroundColor: (theme) => theme.palette.mode === 'light' ? 'rgba(0, 0, 0, 0.02)' : 'rgba(255, 255, 255, 0.02)',
+                borderTop: (theme) => `1px solid ${theme.palette.divider}`,
             }}
         >
             <Container maxWidth="lg">

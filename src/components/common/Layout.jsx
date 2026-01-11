@@ -1,9 +1,9 @@
 import { Box, Container } from '@mui/material';
-import Navbar from './Navbar';
+import Navbar from '../Navbar';
 import Footer from './Footer';
 import SkipLink from './SkipLink';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, toggleTheme, mode }) => {
     return (
         <Box
             sx={{
@@ -11,10 +11,11 @@ const Layout = ({ children }) => {
                 flexDirection: 'column',
                 minHeight: '100vh',
                 backgroundColor: 'background.default',
+                transition: 'background-color 0.3s ease',
             }}
         >
             <SkipLink />
-            <Navbar />
+            <Navbar toggleTheme={toggleTheme} mode={mode} />
             <Box
                 component="main"
                 id="main-content"

@@ -18,42 +18,21 @@ export const ProjectsContainer = styled(Box)(({ theme }) => ({
 export const ProjectGrid = ProjectsContainer;
 
 export const ProjectCard = styled(Paper)(({ theme }) => ({
-  padding: theme.spacing(3),
+  padding: 0,
   height: "100%",
   display: "flex",
   flexDirection: "column",
-  background: `rgba(255, 255, 255, 0.10)`,
-  backdropFilter: "blur(16px)",
-  borderRadius: theme.spacing(3),
-  border: `2px solid ${theme.palette.primary.light}30`,
-  boxShadow: `0 4px 32px 0 ${theme.palette.primary.main}10`,
-  transition:
-    "transform 0.3s cubic-bezier(.25,.8,.25,1), box-shadow 0.3s cubic-bezier(.25,.8,.25,1), border 0.3s cubic-bezier(.25,.8,.25,1)",
-  width: "100%",
-  maxWidth: "100%",
-  margin: 0,
+  background: theme.palette.mode === 'light' ? 'rgba(255, 255, 255, 0.8)' : 'rgba(30, 41, 59, 0.8)',
+  backdropFilter: "blur(12px)",
+  borderRadius: 20,
+  border: `1px solid ${theme.palette.mode === 'light' ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255, 255, 255, 0.05)'}`,
   overflow: "hidden",
-  position: "relative",
-  "&:before": {
-    content: '""',
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
-    background: `linear-gradient(120deg, ${theme.palette.primary.light}22 0%, transparent 100%)`,
-    zIndex: 0,
-    pointerEvents: "none",
-  },
-  "& > *": {
-    position: "relative",
-    zIndex: 1,
-  },
+  transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
   "&:hover": {
-    transform: "translateY(-8px) scale(1.03)",
-    boxShadow: `0 12px 40px 0 ${theme.palette.primary.main}22`,
-    border: `2.5px solid ${theme.palette.primary.main}60`,
-    background: `rgba(255,255,255,0.16)`,
+    transform: "translateY(-8px)",
+    boxShadow: theme.palette.mode === 'light' 
+      ? '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)'
+      : '0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3)',
   },
 }));
 
@@ -75,7 +54,7 @@ export const ProjectMedia = ProjectImage;
 
 export const ProjectContent = styled(Box)(({ theme }) => ({
   padding: theme.spacing(3),
-  flexGrow: 1,
+  flex: 1,
   display: "flex",
   flexDirection: "column",
 }));
@@ -87,9 +66,14 @@ export const ProjectTitle = styled(Typography)(({ theme }) => ({
 }));
 
 export const ProjectDescription = styled(Typography)(({ theme }) => ({
-  marginBottom: theme.spacing(2),
+  marginBottom: theme.spacing(3),
   color: theme.palette.text.secondary,
-  flexGrow: 1,
+  flex: 1,
+  minHeight: "4.5em", // Standardize height for ~3 lines of text
+  display: "-webkit-box",
+  WebkitLineClamp: 3,
+  WebkitBoxOrientation: "vertical",
+  overflow: "hidden",
 }));
 
 export const ProjectTechStack = styled(Box)(({ theme }) => ({
@@ -100,11 +84,13 @@ export const ProjectTechStack = styled(Box)(({ theme }) => ({
 }));
 
 export const TechChip = styled(Chip)(({ theme }) => ({
-  background: `linear-gradient(90deg, ${theme.palette.primary.light}10 0%, transparent 100%)`,
+  backgroundColor: theme.palette.mode === 'light' ? 'rgba(37, 99, 235, 0.05)' : 'rgba(96, 165, 250, 0.1)',
   color: theme.palette.primary.main,
-  border: `1px solid ${theme.palette.primary.light}20`,
+  fontWeight: 600,
+  fontSize: '0.75rem',
+  border: `1px solid ${theme.palette.mode === 'light' ? 'rgba(37, 99, 235, 0.1)' : 'rgba(96, 165, 250, 0.2)'}`,
   "&:hover": {
-    background: `linear-gradient(90deg, ${theme.palette.primary.light}20 0%, transparent 100%)`,
+    backgroundColor: theme.palette.mode === 'light' ? 'rgba(37, 99, 235, 0.1)' : 'rgba(96, 165, 250, 0.2)',
   },
 }));
 

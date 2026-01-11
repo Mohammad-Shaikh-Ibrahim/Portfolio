@@ -5,71 +5,78 @@ export const ContactContainer = styled(Box)(({ theme }) => ({
   display: "grid",
   gridTemplateColumns: "1fr 1fr",
   gap: theme.spacing(4),
-  maxWidth: "1000px",
+  maxWidth: "1100px",
   margin: "0 auto",
-  padding: theme.spacing(6),
+  padding: theme.spacing(8, 4),
   width: "100%",
   boxSizing: "border-box",
-  overflowX: "hidden",
+  overflowX: "hidden", // Safety measure
   [theme.breakpoints.down("md")]: {
     gridTemplateColumns: "1fr",
-    padding: theme.spacing(3),
-    gap: theme.spacing(2),
+    padding: theme.spacing(4, 2),
+    gap: theme.spacing(4),
   },
   [theme.breakpoints.down("sm")]: {
-    padding: theme.spacing(1),
+    padding: theme.spacing(3, 1.5),
   },
 }));
 
 export const ContactForm = styled(Box)(({ theme }) => ({
-  background: "rgba(255,255,255,0.08)",
-  borderRadius: theme.spacing(3),
-  boxShadow: theme.shadows[2],
-  padding: theme.spacing(4),
+  background: theme.palette.mode === 'light' ? 'rgba(255, 255, 255, 0.4)' : 'rgba(30, 41, 59, 0.4)',
+  backdropFilter: "blur(12px)",
+  borderRadius: 24,
+  border: `1px solid ${theme.palette.divider}`,
+  padding: theme.spacing(5),
   display: "flex",
   flexDirection: "column",
-  gap: theme.spacing(2),
-  [theme.breakpoints.down("md")]: {
-    padding: theme.spacing(2),
-  },
-  [theme.breakpoints.down("sm")]: {
-    padding: theme.spacing(1),
-    gap: theme.spacing(1.5),
-    width: "100%",
-    boxSizing: "border-box",
-  },
+  gap: theme.spacing(3),
   width: "100%",
   boxSizing: "border-box",
+  [theme.breakpoints.down("md")]: {
+    padding: theme.spacing(4),
+  },
+  [theme.breakpoints.down("sm")]: {
+    padding: theme.spacing(3, 2), // Reduced padding for 320px
+    borderRadius: 20,
+  },
 }));
 
 export const ContactInfo = styled(Box)(({ theme }) => ({
-  background: "rgba(255,255,255,0.08)",
-  borderRadius: theme.spacing(3),
-  boxShadow: theme.shadows[2],
-  padding: theme.spacing(4),
+  background: theme.palette.mode === 'light' ? 'rgba(37, 99, 235, 0.02)' : 'rgba(96, 165, 250, 0.02)',
+  backdropFilter: "blur(12px)",
+  borderRadius: 24,
+  border: `1px solid ${theme.palette.divider}`,
+  padding: theme.spacing(5),
   display: "flex",
   flexDirection: "column",
-  gap: theme.spacing(2),
+  gap: theme.spacing(3),
+  width: "100%",
+  boxSizing: "border-box",
   [theme.breakpoints.down("md")]: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(4),
     marginTop: theme.spacing(2),
   },
   [theme.breakpoints.down("sm")]: {
-    padding: theme.spacing(1),
-    gap: theme.spacing(1.5),
-    width: "100%",
-    boxSizing: "border-box",
+    padding: theme.spacing(3, 2), // Reduced padding for 320px
     marginTop: 0,
+    borderRadius: 20,
   },
-  width: "100%",
-  boxSizing: "border-box",
 }));
 
 export const StyledTextField = styled(TextField)(({ theme }) => ({
-  background: "rgba(255,255,255,0.15)",
-  borderRadius: theme.spacing(1),
+  background: theme.palette.mode === 'light' ? 'rgba(0, 0, 0, 0.02)' : 'rgba(255, 255, 255, 0.02)',
+  borderRadius: 12,
   width: "100%",
   boxSizing: "border-box",
+  "& .MuiOutlinedInput-root": {
+    borderRadius: 12,
+    "& fieldset": {
+      borderColor: theme.palette.divider,
+    },
+    "&:hover fieldset": {
+      borderColor: theme.palette.primary.main,
+    },
+  },
   "& .MuiInputBase-root": {
     fontSize: 16,
     [theme.breakpoints.down("sm")]: {

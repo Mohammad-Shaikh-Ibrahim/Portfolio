@@ -20,10 +20,14 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { NAV_ITEMS, CV_PATH } from '../constants';
 
-const Navbar = () => {
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
+
+const Navbar = ({ toggleTheme, mode }) => {
     const [mobileOpen, setMobileOpen] = useState(false);
     const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+    const isTablet = useMediaQuery(theme.breakpoints.down('lg'));
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -87,6 +91,19 @@ const Navbar = () => {
                         />
                     </ListItemButton>
                 </ListItem>
+                {/* Theme Toggle for Drawer */}
+                <ListItem disablePadding>
+                    <ListItemButton onClick={toggleTheme}>
+                        <ListItemText
+                            primary={mode === 'dark' ? "Light Mode" : "Dark Mode"}
+                            primaryTypographyProps={{
+                                fontWeight: 600,
+                                color: theme.palette.primary.main,
+                            }}
+                        />
+                        {mode === 'dark' ? <Brightness7Icon color="primary" /> : <Brightness4Icon color="primary" />}
+                    </ListItemButton>
+                </ListItem>
             </List>
         </Box>
     );
@@ -104,13 +121,14 @@ const Navbar = () => {
                                 flexGrow: 1,
                                 textDecoration: 'none',
                                 color: theme.palette.primary.main,
-                                fontWeight: 700,
+                                fontWeight: 800,
                                 background: `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
                                 WebkitBackgroundClip: 'text',
                                 WebkitTextFillColor: 'transparent',
+                                fontSize: { xs: '1.25rem', sm: '1.5rem' }
                             }}
                         >
-                            Mohammad Shaikh Ibrahim
+                            {isTablet ? 'MSI' : 'Mohammad Shaikh Ibrahim'}
                         </Typography>
 
                         {isMobile ? (
@@ -143,6 +161,10 @@ const Navbar = () => {
                                         {item.name}
                                     </Button>
                                 ))}
+                                {/* Theme Toggle Desktop */}
+                                <IconButton onClick={toggleTheme} color="primary" sx={{ ml: 1 }}>
+                                    {mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+                                </IconButton>
                                 {/* Download CV Button for Desktop */}
                                 <Button
                                     color="primary"
